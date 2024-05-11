@@ -1,0 +1,35 @@
+<header>
+    <div class="logo">
+      <!-- Your logo or branding -->
+      <h1>Angular Dashboard</h1>
+    </div>
+    <div class="search">
+      <button class="btn btn-primary" (click)="goBack()"><i class="fa-solid fa-arrow-left"></i> Go Back</button>
+      <!-- <input type="text" placeholder="Search by ID" (input)="searchUser($event)"> -->
+    </div>
+</header>
+
+<app-loading [isLoading]="loading"></app-loading>
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h2 *ngIf="user">User: {{ user.first_name }} {{ user.last_name }}</h2>
+        <p class="alert alert-danger" *ngIf="error">{{ error }}</p>
+        <div class="flip-card" *ngIf="user"> 
+            <!-- <div class="flip-card" *ngIf="user && !error">  -->
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img [src]="user.avatar" alt="User Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <p class=""><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+              <p class=""><strong>Email:</strong> {{ user.email }}</p>
+              <p class=""><strong>ID:</strong> {{ user.id }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

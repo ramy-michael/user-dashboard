@@ -1,0 +1,24 @@
+<app-header></app-header>
+<app-loading [isLoading]="loading"></app-loading>
+
+<div class="container">
+    <h2>User List</h2>
+    <div *ngIf="loading" class="loading">Loading...</div>
+    <div class="row" *ngIf="!loading">
+        <div class="col-4 mb-3" *ngFor="let user of users" (click)="navigateToUser(user.id)">
+            <div class="card">
+                <div class="card-header">
+                    <img [src]="user.avatar" alt="User Avatar" height="128" width="128">
+                </div>
+                <div class="card-body">
+                    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+                    <p>ID: {{ user.id }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination mt-3">
+        <button class="btn btn-primary mr-2" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+</div>
